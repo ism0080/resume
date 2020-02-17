@@ -1,0 +1,3 @@
+interface CommonProps {
+  testID: string
+}

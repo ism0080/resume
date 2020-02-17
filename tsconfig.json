@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "noImplicitThis": true,
+    "jsx": "react",
+    "baseUrl": "src",
+    "outDir": "dist",
+    "target": "es5",
+    "lib": ["dom", "es2015"],
+    "allowJs": true,
+    "checkJs": false,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "module": "esnext",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "declaration": true,
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin",
+        "configFile": "./tslint.json"
+      }
+    ],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "noEmit": true,
+    "typeRoots": ["node_modules/@types", "src/**/*.interface.ts"]
+  },
+  "exclude": ["node_modules"],
+  "compileOnSave": true,
+  "include": ["./src/**/*", "**/*", "./**/*.d.ts"],
+  "paths": {
+    "components": ["./src/components"]
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "reportFiles": ["./src/**/*"]
+  }
+}
