@@ -1,14 +1,6 @@
-# react-template
+# Resume
 
-My basic implementation of a React App with:
-
-- Typescript
-- Webpack
-- Prettier
-- TsLint
-- Husky
-- Reach Router
-- Jest
+My personal website
 
 ## Installation
 

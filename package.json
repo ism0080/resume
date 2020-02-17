@@ -1,8 +1,8 @@
 {
-  "name": "react-template",
+  "name": "resume",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/ism0080/react-template.git",
+  "repository": "https://github.com/ism0080/resume.git",
   "author": "Isaac Mackle <isaac.mackle@gmail.com>",
   "license": "MIT",
   "private": true,

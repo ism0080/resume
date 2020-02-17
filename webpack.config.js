@@ -30,7 +30,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
     useShortDoctype: true,
   },
   template: rootPath('public', 'index.html'),
-  title: 'react-template',
+  title: 'Isaac Mackle - Software Engineer',
 })
 
 const hotModulePlugin = new webpack.HotModuleReplacementPlugin()
