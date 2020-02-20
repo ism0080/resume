@@ -4,7 +4,16 @@ import { render } from 'react-dom'
 import './index.css'
 
 import { Routes } from 'components'
+import { useBreakpoints } from './hooks'
 
-const App = () => <Routes />
+const App = () => {
+  const { isMobile } = useBreakpoints()
+
+  return (
+    <div style={{ marginTop: isMobile ? 85 : 240 }}>
+      <Routes />
+    </div>
+  )
+}
 
 render(<App />, document.getElementById('root'))

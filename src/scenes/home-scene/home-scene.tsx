@@ -1,17 +1,14 @@
 import React from 'react'
 
 import { StackNavigation } from 'components'
+import { SvgRenderer } from 'res'
+
 import './home-scene.css'
-import { useBreakpoints } from 'hooks'
 
-export const HomeScene = () => {
-  const { isMobile } = useBreakpoints()
-
-  return (
-    <StackNavigation>
-      <h1 data-testid='home-scene' className='container' style={{ marginTop: isMobile ? 85 : 280 }}>
-        Hello World
-      </h1>
-    </StackNavigation>
-  )
-}
+export const HomeScene = () => (
+  <StackNavigation>
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', padding: 20 }}>
+      <SvgRenderer name='comingSoon' width={500} height={300} />
+    </div>
+  </StackNavigation>
+)

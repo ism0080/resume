@@ -97,6 +97,7 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components/'),
       scenes: path.resolve(__dirname, 'src/scenes/'),
       hooks: path.resolve(__dirname, 'src/hooks/'),
+      res: path.resolve(__dirname, 'src/res/'),
     },
   },
   devServer: {
