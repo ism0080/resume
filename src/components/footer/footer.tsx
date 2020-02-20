@@ -1,19 +1,17 @@
 import React from 'react'
 
+import './footer.css'
+
 export const Footer = () => (
-  <div style={{ display: 'flex', placeContent: 'center', bottom: 0, position: 'fixed', width: '100%' }}>
+  <div className='wrapper'>
     <p>Isaac Mackle</p>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: 200,
-        alignItems: 'center',
-      }}
-    >
-      <a href='#'>LinkedIn</a>
-      <a href='#'>GitHub</a>
+    <div className='links'>
+      <a href='https://www.linkedin.com/in/ism0080' target='_blank'>
+        LinkedIn
+      </a>
+      <a href='https://github.com/ism0080' target='_blank'>
+        GitHub
+      </a>
       <a href='mailto:isaac.mackle@gmail.com'>Email</a>
     </div>
   </div>

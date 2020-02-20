@@ -4,7 +4,27 @@
     'Helvetica Neue', sans-serif;
 }
 
+.page-container {
+  position: relative;
+  min-height: 65vh;
+}
+
 body {
   background-color: #c2dae8;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #000;
 }

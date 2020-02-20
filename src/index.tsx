@@ -10,7 +10,7 @@ const App = () => {
   const { isMobile } = useBreakpoints()
 
   return (
-    <div style={{ marginTop: isMobile ? 85 : 240 }}>
+    <div className='page-container' style={{ marginTop: isMobile ? 85 : 240 }}>
       <Routes />
     </div>
   )
