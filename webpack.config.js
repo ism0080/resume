@@ -96,6 +96,7 @@ module.exports = {
       // Use for absolute paths
       components: path.resolve(__dirname, 'src/components/'),
       scenes: path.resolve(__dirname, 'src/scenes/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
     },
   },
   devServer: {

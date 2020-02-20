@@ -28,7 +28,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "typeRoots": ["node_modules/@types", "src/**/*.interface.ts"]
   },
@@ -36,7 +36,9 @@
   "compileOnSave": true,
   "include": ["./src/**/*", "**/*", "./**/*.d.ts"],
   "paths": {
-    "components": ["./src/components"]
+    "components": "./src/components",
+    "scenes": "./src/scenes",
+    "hooks": "./src/hooks"
   },
   "awesomeTypescriptLoaderOptions": {
     "reportFiles": ["./src/**/*"]
