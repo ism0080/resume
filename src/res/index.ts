@@ -1,2 +1,2 @@
-export * from './icons'
-export * from './svg-renderer'
+// export * from './icons'
+// export * from './svg-renderer'
