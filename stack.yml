@@ -1,0 +1,200 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Static website hosting with S3 and CloudFront for isaacmackle.com'
+Parameters:
+  DefaultRootObject:
+    Description: 'The default path for the index document.'
+    Type: String
+    Default: '/index.html'
+  ErrorPagePath:
+    Description: 'The path of the error page for the website.'
+    Type: String
+    Default: '/404.html'
+  Domain:
+    Description: 'The domain of the website'
+    Type: String
+  HostedZoneId:
+    Description: 'The ID of the hosted zone in Route 53'
+    Type: String
+  Cert:
+    Description: 'The arn reference for the SSL certificate'
+    Type: String
+  S3Bucket:
+    Description: 'The name of S3 Bucket'
+    Type: String
+
+Resources:
+  # Create a CloudFront Access Identity to broker access to the bucket
+  CloudFrontOriginAccessIdentity: 
+    Type: 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Ref S3Bucket
+  ReadPolicy: 
+      Type: 'AWS::S3::BucketPolicy'
+      Properties:
+        Bucket: !Ref S3Bucket
+        PolicyDocument:
+          Statement:
+          - Action: 's3:GetObject'
+            Effect: Allow
+            Resource: !Sub 'arn:aws:s3:::${S3Bucket}/*'
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
+
+  # Configure the bucket as a CloudFront Origin and grant access via the access identity
+  CloudFrontDistribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Aliases:
+        - !Ref Domain
+        ViewerCertificate:
+          AcmCertificateArn: !Ref Cert
+          SslSupportMethod: 'sni-only'
+        CustomerErrorResponses:
+        - ErrorCode: 403 # not found
+          ResponseCode: 404
+          ResponsePagePath: !Ref ErrorPagePath
+        LambdaFunctionAssociations:
+          - EventType: 'origin-request'
+            LambdaFunctionARN: !Ref VersionedLambdaFunction
+        DefaultRootObject: '' # !Ref DefaultRootObject
+        Enabled: true
+        HttpVersion: http2
+        Origins:
+        - DomainName: !GetAtt 'S3Bucket.DomainName'
+          Id: s3origin
+          S3OriginConfig:
+            OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}'
+        PriceClass: 'PriceClass_All'
+        DefaultCacheBehavior:
+          AllowedMethods:
+          - GET
+          - HEAD
+          - OPTIONS
+          CachedMethods:
+          - GET
+          - HEAD
+          - OPTIONS
+          Compress: true
+          DefaultTTL: 3600 # in seconds
+          ForwardedValues:
+            Cookies:
+              Forward: none
+            QueryString: false
+          MaxTTL: 86400 # in seconds
+          MinTTL: 60 # in seconds
+          TargetOriginId: s3origin
+          ViewerProtocolPolicy: 'allow-all'
+          
+
+  # Create an IAM user with Access Keys to enable automated deployment of the website to this bucket
+  PublishUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      Policies:
+        - PolicyName: !Sub 'publish-to-${S3Bucket}'
+          PolicyDocument:
+            Statement:
+            - Action: 's3:*'
+              Effect: Allow
+              Resource:
+              - !Sub 'arn:aws:s3:::${S3Bucket}'
+              - !Sub 'arn:aws:s3:::${S3Bucket}/*'
+  PublishCredentials:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref PublishUser
+
+  # Create Lambda role for Lambda@Edge
+  LambdaRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - 'lambda.amazonaws.com'
+            - 'edgelambda.amazonaws.com'
+          Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+      - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+  LambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Code:
+        zipFile: !Sub |
+          'use strict';
+          const regex = /\.[a-z0-9]+$/;
+          const indexDocument = '${DefaultRootObject}';
+          exports.handler = (event, context, cb) => {
+              const cf = event.Records[0].cf;
+              const config = cf.config;
+              const request = cf.request;
+              if (request.uri.endsWith('/')) {
+                cb(null, Object.assign({}, request, {uri: `${!request.uri}${!indexDocument}`}));
+              } else if (request.uri.endsWith(`/${!indexDocument}`)) {
+                cb(null, {
+                  status: '302',
+                  statusDescription: 'Found',
+                  headers: {
+                    location: [{
+                      key: 'Location',
+                      value: request.uri.substr(0, request.uri.length - indexDocument.length),
+                    }],
+                  }
+                });
+              } else if (!regex.test(request.uri)) {
+                cb(null, {
+                  status: '302',
+                  statusDescription: 'Found',
+                  headers: {
+                    location: [{
+                      key: 'Location',
+                      value: `${!request.uri}/`,
+                    }],
+                  }
+                });
+              } else {
+                cb(null, request);
+              }
+          };
+    Handler: 'index.handler'
+    MemorySize: 128
+    Role: !GetAtt 'LambdaRole.Arn'
+    Runtime: 'nodejs6.10'
+    Timeout: 5
+
+VersionedLambdaFunction:
+  Type: 'AWS::Lambda::Version'
+  Properties:
+    FunctionName: !Ref LambdaFunction
+
+Route53Record:
+  Type: 'AWS::Route53::RecordSet'
+  Properties:
+    HostedZoneId: !Ref HostedZoneId
+    Name: !Ref Domain
+    Type: A
+    AliasTarget:
+      HostedZoneId: Z2FDTNDATAQYW2 # This Zone ID is used for any CloudFront Distribution
+      Domain: !GetAtt 'CloudFrontDistribution.DomainName'
+
+Outputs:
+  BucketName:
+    Description: 'S3 Bucket Name'
+    Value: !Ref S3Bucket
+  AccessKeyId:
+    Description: 'S3 Access Key'
+    Value: !Ref PublishCredentials
+  AccessKeySecret:
+    Description: 'S3 Secret Key'
+    Value: !GetAtt PublishCredentials.SecretAccessKey
+  DistributionId:
+    Description: 'S3 Secret Key'
+    Value: !Ref CloudFrontDistribution
+  Domain:
+    Description: 'Cloudfront Domain'
+    Value: !GetAtt CloudFrontDistribution.DomainName
