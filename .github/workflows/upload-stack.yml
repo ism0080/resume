@@ -22,4 +22,4 @@ jobs:
         with:
           stackName: resume
           templateFile: stack.yml
-          parameters: HostedZoneId=${{ secrets.HostedZoneId }} Cert={{ secrets.Cert }} S3Bucket=${{ secrets.S3Bucket }}
+          parameters: HostedZoneId=${{ secrets.HostedZoneId }} Cert=${{ secrets.Cert }} S3Bucket=${{ secrets.S3Bucket }}
