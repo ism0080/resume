@@ -1,4 +1,4 @@
-name: Cloud Formation Upload
+name: S3 Bucket Uploader
 
 on:
   pull_request:
@@ -15,10 +15,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
-      - name: Yarn Install
+      - name: Install
         run: |
           yarn install
-      - name: Production Build
+      - name: Build
         run: |
           yarn build
       - name: Configure AWS Credentials
