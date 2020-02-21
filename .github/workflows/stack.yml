@@ -1,0 +1,31 @@
+name: Cloud Formation Upload
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Yarn Install
+        run: |
+          yarn install
+      - name: Production Build
+        run: |
+          yarn build
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CF_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CF_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy to S3
+        run: aws s3 sync ./dist/ s3://${{ secrets.CF_S3_BUCKET }} --delete
