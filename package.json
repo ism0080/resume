@@ -11,6 +11,9 @@
     "build": "yarn build:web",
     "build:web": "webpack --mode production",
     "test": "jest -c ./jest.config.js",
+    "lint": "yarn run lint:all",
+    "lint:all": "eslint -c ./.eslintrc './src/**/*.ts'",
+    "lint:fix": "eslint -c ./.eslintrc './src/**/*.ts' --fix",
     "clean": "yarn clean:modules; yarn",
     "clean:modules": "rm -rf node_modules"
   },
@@ -59,7 +62,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "git pull origin master && yarn lint && yarn test"
     }
   }
 }

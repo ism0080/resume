@@ -6,8 +6,8 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended", // Uses recommended rules from @typescript-eslint
     "plugin:@typescript-eslint/eslint-recommended", // Uses recommended rules from @typescript-eslint
-    //   "prettier",
-    //   "prettier/@typescript-eslint", // Disables ESLint rules that would conflict with Prettier
+    "prettier",
+    "prettier/@typescript-eslint", // Disables ESLint rules that would conflict with Prettier
     "plugin:prettier/recommended" // Links Prettier errors into ESLint errors
   ],
   "parserOptions": {
