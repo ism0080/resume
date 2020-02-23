@@ -1,7 +1,7 @@
 module.exports = {
   displayName: 'web',
   testMatch: ['<rootDir>/src/**/*.spec.{ts,tsx}'],
-  moduleDirectories: ['<rootDir>/node_modules'],
+  moduleDirectories: ['node_modules', 'src'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
     // components: '<rootDir>/src/components',
