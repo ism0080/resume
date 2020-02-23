@@ -1,0 +1,69 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser", // Allow ESLint to parse TypeScript
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended", // Uses recommended rules from @typescript-eslint
+    "plugin:@typescript-eslint/eslint-recommended", // Uses recommended rules from @typescript-eslint
+    //   "prettier",
+    //   "prettier/@typescript-eslint", // Disables ESLint rules that would conflict with Prettier
+    "plugin:prettier/recommended" // Links Prettier errors into ESLint errors
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2018, // Parse modern ECMAScript features
+    "sourceType": "module", // Allow module imports
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "ignorePatterns": ["node_modules", "**/*.test.*", "**/*.spec.*", "application"],
+  "rules": {
+    "for-direction": "warn", // Check for-loop increments counter
+    "getter-return": "error", // Enforce return statements in getters
+    "no-async-promise-executor": "error", // Disallow using an async function as a Promise executor
+    "no-await-in-loop": "error", // Disallow `await` inside of loops
+    "no-compare-neg-zero": "error", // Disallow comparing against -0
+    "no-cond-assign": "error", // Disallow conditional assignment
+    "no-constant-condition": "warn", // Disallow constant expressions in conditions
+    "no-console": "error", // Disallow the use of console commands
+    "no-control-regex": "error", // Disallow control characters in regex
+    "no-debugger": "error", // Disallow the use of `debugger`
+    "no-dupe-args": "error", // Disallow duplicate arguments in `function` definitions
+    "no-dupe-else-if": "error", // Disallow duplicate conditions in if-else chains
+    "no-dupe-keys": "error", // Disallow duplicate keys in object literals
+    "no-empty": "warn", // Disallow empty function blocks
+    "no-empty-character-class": "error", // Disallow empty character class in regular expressions
+    "no-ex-assign": "error", // Prevents destructive reassigning of exception errors
+    "no-extra-boolean-cast": "warn", // Disallows unnecessary boolean casts
+    "no-extra-parens": [
+      "error",
+      "all",
+      {
+        "returnAssign": true,
+        "nestedBinaryExpressions": false,
+        "ignoreJSX": "single-line",
+        "enforceForArrowConditionals": true,
+        "enforceForSequenceExpressions": true
+      }
+    ],
+    "no-extra-semi": "warn", // Disallows additional semicolons
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "noInlineConfig": false,
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      // Configure custom rules for files matching the specific pattern, using a global eslint and then extending it in specific eslints would be better, using where appropriate
+      "files": ["*.test.*", "*.spec.*"],
+      "rules": {
+        "no-unused-expressions": "warn"
+      }
+    }
+  ]
+}

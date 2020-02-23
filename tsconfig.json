@@ -1,4 +1,5 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "noImplicitThis": true,
     "jsx": "react",
@@ -19,22 +20,15 @@
     "noUnusedLocals": true,
     "pretty": true,
     "declaration": true,
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin",
-        "configFile": "./tslint.json"
-      }
-    ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "isolatedModules": false,
     "noEmit": true,
-    "typeRoots": ["node_modules/@types", "src/**/*.interface.ts"]
+    "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules"],
-  "compileOnSave": true,
   "include": ["./src/**/*", "**/*", "./**/*.d.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
   "paths": {
     "components": "./src/components",
     "scenes": "./src/scenes",
