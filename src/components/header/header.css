@@ -1,10 +1,11 @@
 .navbar {
   overflow: hidden;
   transition: 0.4s;
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   display: flex;
+  padding: 0 20px;
 }
 
 .navbar a {
@@ -21,7 +22,9 @@
 .logo {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
+  font-size: 25px;
+  width: 100%;
 }
 
 .logo span {
@@ -29,7 +32,6 @@
 }
 
 .navbar .logo {
-  font-size: 35px;
   transition: 0.4s;
 }
 
@@ -49,7 +51,7 @@
 
 @media screen and (max-width: 580px) {
   .navbar {
-    padding: 20px 10px !important;
+    padding: 0 10px;
   }
   .navbar a {
     float: none;
@@ -59,7 +61,8 @@
   .navbar-right {
     float: none;
   }
-  .navbar .logo {
-    font-size: 25px !important;
+
+  .logo {
+    font-size: 16px;
   }
 }

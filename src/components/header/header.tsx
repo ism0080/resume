@@ -1,33 +1,25 @@
 import React from 'react'
-import { useBigNav, useBreakpoints } from 'hooks'
+
+import { theme, useBigNav } from 'hooks'
 
 import './header.css'
 
 export const Header = ({ testID, title, subtitle }: HeaderProps) => {
-  const isBigNav = useBigNav()
-  const { isMobile } = useBreakpoints()
+  const isBigNav = useBigNav(5)
 
   return (
     <div
       data-testid={testID}
       style={{
-        padding: isBigNav && !isMobile ? '90px 10px' : '30px 10px',
-        backgroundColor: isBigNav && !isMobile ? '' : '#fff',
+        height: isBigNav ? 0 : 79,
+        backgroundColor: theme.colors.defaultAccent,
       }}
       className={'navbar'}
     >
-      <p
-        style={{ fontSize: isBigNav && !isMobile ? 35 : 25, width: isBigNav && !isMobile ? '100%' : 150, margin: 0 }}
-        className={'logo'}
-      >
+      <p data-testid={`${testID}.header-text`} className={'logo'} style={{ color: theme.colors.textLight }}>
         {title}
-        {isBigNav && !isMobile && <span>{subtitle}</span>}
+        <span data-testid={`${testID}.header-subtitle`}>{subtitle}</span>
       </p>
     </div>
   )
-}
-
-interface HeaderProps extends CommonProps {
-  title: string
-  subtitle?: string
 }

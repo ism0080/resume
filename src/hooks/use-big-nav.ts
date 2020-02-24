@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 
-export const useBigNav = () => {
+/**
+ * Returns true if scroll value is met
+ * @param scrollValue Scroll value the handler should check for
+ * @return true | false
+ */
+export const useBigNav = (scrollValue: number) => {
   const [isBigNav, setIsBigNav] = useState<boolean>(true)
 
   const scroller = () => {
-    window.scrollY > 80 ? setIsBigNav(false) : setIsBigNav(true)
+    window.scrollY > scrollValue ? setIsBigNav(false) : setIsBigNav(true)
   }
 
   useEffect(() => {

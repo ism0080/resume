@@ -6,6 +6,7 @@
   flex-direction: column;
   position: absolute;
   bottom: 0;
+  padding-bottom: 20px;
 }
 
 .links {

@@ -6,11 +6,10 @@
 
 .page-container {
   position: relative;
-  min-height: 65vh;
+  min-height: 100vh;
 }
 
 body {
-  background-color: #c2dae8;
   margin: 0;
 }
 
