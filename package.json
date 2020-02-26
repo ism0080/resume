@@ -64,7 +64,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
-      "pre-push": "git pull origin master && yarn lint && yarn test"
+      "pre-push": "git pull origin master && yarn lint && yarn test",
+      "post-checkout": "git pull"
     }
   }
 }
