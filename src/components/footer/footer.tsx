@@ -3,7 +3,7 @@ import React from 'react'
 import './footer.css'
 
 export const Footer = () => (
-  <div className='wrapper'>
+  <div className='footer'>
     <p>Isaac Mackle</p>
     <div className='links'>
       <a href='https://www.linkedin.com/in/ism0080' target='_blank'>
