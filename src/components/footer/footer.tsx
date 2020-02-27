@@ -2,17 +2,17 @@ import React from 'react'
 
 import './footer.css'
 
-export const Footer = () => (
-  <div className='footer'>
-    <p>Isaac Mackle</p>
-    <div className='links'>
-      <a href='https://www.linkedin.com/in/ism0080' target='_blank'>
-        LinkedIn
-      </a>
-      <a href='https://github.com/ism0080' target='_blank'>
-        GitHub
-      </a>
-      <a href='mailto:isaac.mackle@gmail.com'>Email</a>
-    </div>
+export const Footer = ({ testID, title, links }: FooterProps) => (
+  <div data-testid={testID} className='footer'>
+    <p>{title}</p>
+    {links && (
+      <div data-testid={`${testID}.links`} className='links'>
+        {links.map((link) => (
+          <a data-testid={`${testID}.link.${link.title}`} key={link.title} href={link.url} target='_blank'>
+            {link.title}
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 )

@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 
 import { theme } from 'hooks'
 
-import './index.css'
+import './App.css'
 
 import { Routes } from 'components'
 

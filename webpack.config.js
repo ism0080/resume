@@ -44,7 +44,7 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
  * Webpack Configuration
  */
 module.exports = {
-  entry: ['webpack/hot/dev-server', rootPath('src', 'index.tsx')],
+  entry: ['webpack/hot/dev-server', rootPath('src', 'App.tsx')],
   output: {
     filename: '[name]-bundle.js',
     path: rootPath('dist'),

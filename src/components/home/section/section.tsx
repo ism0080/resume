@@ -11,7 +11,7 @@ export const Section = ({ testID, height = 300, color, children }: SectionProps)
   }
 
   return (
-    <div className={'section'} data-testid={`${testID}.section`} style={{ backgroundColor: _color, height: height }}>
+    <div className={'section'} data-testid={`${testID}`} style={{ backgroundColor: _color, height: height }}>
       {children}
     </div>
   )

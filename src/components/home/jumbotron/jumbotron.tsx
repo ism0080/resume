@@ -11,7 +11,7 @@ export const Jumbotron = ({ testID, title, subtitle }: JumbotronProps) => {
     <Section testID={testID} height={isMobile ? 200 : 300}>
       <p data-testid={`${testID}.p`} className='jumbotron' style={{ color: theme.colors.white }}>
         {title}
-        {subtitle && <span>{subtitle}</span>}
+        {subtitle && <span data-testid={`${testID}.subtitle`}>{subtitle}</span>}
       </p>
     </Section>
   )
