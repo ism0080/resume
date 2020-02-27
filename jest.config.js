@@ -10,4 +10,20 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
+  // collectCoverage: false,
+  // coverageThreshold: {
+  //   global: {
+  //     branches: 75,
+  //     functions: 75,
+  //     lines: 80,
+  //     statements: 80,
+  //   },
+  // },
+  // coveragePathIgnorePatterns: ['.*.interface.ts'],
+  // collectCoverageFrom: [
+  //   '<rootDir>/src/**/*.{ts,tsx}',
+  //   '!<rootDir>/src/**/__tests__/**/*',
+  //   '!<rootDir>/src/res/**/*',
+  //   '!<rootDir>/src/App.tsx',
+  // ],
 }
