@@ -1,5 +1,5 @@
 # Resume
 
-![Production Build](https://github.com/ism0080/resume/workflows/Production%20Build/badge.svg?branch=master)
+![S3 Bucket Uploader](https://github.com/ism0080/resume/workflows/S3%20Bucket%20Uploader/badge.svg)
 
 My personal website
