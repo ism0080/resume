@@ -26,12 +26,12 @@ describe('Section', () => {
 
   it('should be height=300 by default', () => {
     const { getByTestId } = render(<Section testID='test' children={MockChildren} />)
-    expect(getByTestId('test').style.height).toEqual('300px')
+    expect(getByTestId('test').style.minHeight).toEqual('300px')
   })
 
   it('should render the correct height passed in', () => {
     const { getByTestId } = render(<Section testID='test' height={600} children={MockChildren} />)
-    expect(getByTestId('test').style.height).toEqual('600px')
+    expect(getByTestId('test').style.minHeight).toEqual('600px')
   })
 })
 

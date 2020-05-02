@@ -92,13 +92,7 @@ module.exports = {
   plugins: [miniCssExtractPlugin, htmlPlugin, hotModulePlugin],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.css'],
-    alias: {
-      // Use for absolute paths
-      components: path.resolve(__dirname, 'src/components/'),
-      scenes: path.resolve(__dirname, 'src/scenes/'),
-      hooks: path.resolve(__dirname, 'src/hooks/'),
-      res: path.resolve(__dirname, 'src/res/'),
-    },
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
   devServer: {
     compress: true,
@@ -108,6 +102,6 @@ module.exports = {
     lazy: false,
     open: true,
     port: 3000,
-    publicPath: 'http://localhost:8000',
+    publicPath: 'http://localhost:3000',
   },
 }

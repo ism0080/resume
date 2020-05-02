@@ -2,3 +2,4 @@ node_modules/
 toDo
 
 coverage/
+.DS_Store

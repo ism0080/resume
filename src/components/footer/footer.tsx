@@ -8,7 +8,13 @@ export const Footer = ({ testID, title, links }: FooterProps) => (
     {links && (
       <div data-testid={`${testID}.links`} className='links'>
         {links.map((link) => (
-          <a data-testid={`${testID}.link.${link.title}`} key={link.title} href={link.url} target='_blank'>
+          <a
+            data-testid={`${testID}.link.${link.title}`}
+            key={link.title}
+            href={link.url}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             {link.title}
           </a>
         ))}
