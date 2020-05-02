@@ -11,7 +11,7 @@
     "build": "yarn build:web",
     "build:web": "webpack --mode production",
     "test": "yarn run test:all",
-    "test:all": "jest -c ./jest.config.js --coverage",
+    "test:all": "jest -c ./jest.config.js",
     "lint": "yarn run lint:all",
     "lint:all": "eslint -c ./.eslintrc './src/**/*.ts'",
     "lint:fix": "eslint -c ./.eslintrc './src/**/*.ts' --fix",

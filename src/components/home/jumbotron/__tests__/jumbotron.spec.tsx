@@ -36,6 +36,6 @@ describe('Jumbotron', () => {
         <Jumbotron testID='test' title='title' />
       </ResponsiveContext.Provider>,
     )
-    expect(getByTestId('test').style.height).toBe('200px')
+    expect(getByTestId('test').style.minHeight).toBe('200px')
   })
 })
