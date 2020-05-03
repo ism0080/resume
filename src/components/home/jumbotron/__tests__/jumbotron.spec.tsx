@@ -30,12 +30,12 @@ describe('Jumbotron', () => {
     expect(queryByTestId('test.subtitle')).toBeNull()
   })
 
-  it('should be height 200px when isMobile', () => {
+  it('should be height 100px when isMobile', () => {
     const { getByTestId } = render(
       <ResponsiveContext.Provider value={{ width: 400 }}>
         <Jumbotron testID='test' title='title' />
       </ResponsiveContext.Provider>,
     )
-    expect(getByTestId('test').style.minHeight).toBe('200px')
+    expect(getByTestId('test').style.minHeight).toBe('100px')
   })
 })
