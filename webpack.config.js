@@ -48,7 +48,7 @@ module.exports = {
   output: {
     filename: '[name]-bundle.js',
     path: rootPath('dist'),
-    publicPath: './assets',
+    publicPath: './',
   },
   target: 'web',
   module: {
@@ -86,6 +86,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.pdf$/,
+        loader: 'file-loader?name=[name].[ext]',
       },
     ],
   },
