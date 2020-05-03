@@ -48,7 +48,7 @@ module.exports = {
   output: {
     filename: '[name]-bundle.js',
     path: rootPath('dist'),
-    publicPath: './',
+    publicPath: './assets',
   },
   target: 'web',
   module: {
