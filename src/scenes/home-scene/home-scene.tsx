@@ -1,10 +1,9 @@
 import React from 'react'
-// import { navigate } from '@reach/router'
 
 import { DefaultButton, Jumbotron, Section, StackNavigation } from 'components'
+import { EXPERTISE } from 'components/data'
 import { SvgRenderer } from 'res'
 import { theme, useBreakpoints } from 'hooks'
-// import { NavigationConstants } from 'components/navigation'
 
 import './home-scene.css'
 
@@ -19,6 +18,27 @@ export const HomeScene = () => {
     <StackNavigation>
       <div className='container' data-testid='home-scene'>
         <Jumbotron testID='jumbotron' title='Isaac Mackle' subtitle='Software Engineer' />
+        <Section testID='section-skills' color='light'>
+          <h1 style={{ textAlign: 'center' }}>Expertise</h1>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              width: isMobile ? undefined : 900,
+              margin: '0 auto',
+              padding: isMobile ? 10 : undefined,
+            }}
+          >
+            {EXPERTISE.map((skill) => (
+              <div key={skill.title}>
+                <p>
+                  <strong>{skill.title}</strong> - {skill.content}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Section>
         <Section testID='section-cv' color='dark' twoColumn>
           <SvgRenderer
             name='profile'

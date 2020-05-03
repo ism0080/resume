@@ -1,7 +1,15 @@
 .button {
   border-radius: 10px;
   color: white;
-  box-shadow: 1px 1px 5px 1px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
   font-size: 16px;
   cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  border: 1px solid;
 }

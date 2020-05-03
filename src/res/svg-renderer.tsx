@@ -5,7 +5,7 @@ export const SvgRenderer = ({ fill, width, height, direction, name, padding, hyp
   const Icon = svgIcons[name]
   const calcPadding = padding ? padding / 2 : undefined
 
-  if (padding || hyperlink) {
+  if (hyperlink) {
     return (
       <div style={{ paddingLeft: calcPadding, paddingRight: calcPadding }}>
         <a href={hyperlink}>
@@ -15,5 +15,9 @@ export const SvgRenderer = ({ fill, width, height, direction, name, padding, hyp
     )
   }
 
-  return <Icon fill={fill} width={width} height={height} direction={direction} />
+  return (
+    <div style={{ paddingLeft: calcPadding, paddingRight: calcPadding }}>
+      <Icon fill={fill} width={width} height={height} direction={direction} />
+    </div>
+  )
 }
