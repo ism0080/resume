@@ -1,14 +1,13 @@
 name: S3 Bucket Uploader
 
 on:
-  pull_request:
   push:
     branches:
       - master
 jobs:
-  deploy:
+  job_1:
+    name: Build Artifact
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 10.x
@@ -21,14 +20,24 @@ jobs:
       - name: Build
         run: |
           yarn build
+      - name: Test
+        run: |
+          yarn test
       - name: Create Artifact
         uses: actions/upload-artifact@v1
         with:
           name: build_artifact
-          path: ./dist 
-      - name: Test
-        run: |
-          yarn test
+          path: ./dist
+
+  job_2:
+    name: Upload to AWS
+    needs: job_1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: build_artifact
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -36,4 +45,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.CF_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to S3
-        run: aws s3 sync ./dist/ s3://${{ secrets.CF_S3_BUCKET }} --delete
+        run: |
+          aws s3 sync build_artifact s3://${{ secrets.CF_S3_BUCKET }} --delete
