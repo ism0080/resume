@@ -3,14 +3,14 @@ import { svgIcons } from './icons'
 
 import './svg-renderer.css'
 
-export const SvgRenderer = ({ fill, width, height, direction, name, padding, hyperlink }: SvgRendererProps) => {
+export const SvgRenderer = ({ fill, width, height, direction, name, padding, hyperlink, label }: SvgRendererProps) => {
   const Icon = svgIcons[name]
   const calcPadding = padding ? padding / 2 : undefined
 
   if (hyperlink) {
     return (
       <div className={'scale'} style={{ paddingLeft: calcPadding, paddingRight: calcPadding }}>
-        <a href={hyperlink}>
+        <a href={hyperlink} aria-label={label}>
           <Icon fill={fill} width={width} height={height} direction={direction} />
         </a>
       </div>

@@ -14,14 +14,25 @@ export const Jumbotron = ({ testID, title, subtitle }: JumbotronProps) => {
         {subtitle && <span data-testid={`${testID}.subtitle`}>{subtitle}</span>}
       </p>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <SvgRenderer name='gitHubIcon' fill={theme.colors.white} hyperlink='https://github.com/ism0080' />
+        <SvgRenderer
+          name='gitHubIcon'
+          fill={theme.colors.white}
+          hyperlink='https://github.com/ism0080'
+          label='GitHub'
+        />
         <SvgRenderer
           name='linkedInIcon'
           fill={theme.colors.white}
           padding={20}
           hyperlink='https://www.linkedin.com/in/ism0080'
+          label='LinkedIn'
         />
-        <SvgRenderer name='emailIcon' fill={theme.colors.white} hyperlink='mailto:isaac.mackle@gmail.com' />
+        <SvgRenderer
+          name='emailIcon'
+          fill={theme.colors.white}
+          hyperlink='mailto:isaac.mackle@gmail.com'
+          label='Email'
+        />
       </div>
     </Section>
   )

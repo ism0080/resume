@@ -14,6 +14,7 @@ export const Footer = ({ testID, title, links }: FooterProps) => (
             href={link.url}
             target='_blank'
             rel='noopener noreferrer'
+            aria-label={link.title}
           >
             {link.title}
           </a>

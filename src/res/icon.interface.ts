@@ -14,4 +14,8 @@ interface SvgRendererProps extends SvgIconProps {
    */
   padding?: number
   hyperlink?: string
+  /**
+   * Aria Label for accessibility
+   */
+  label?: string
 }
