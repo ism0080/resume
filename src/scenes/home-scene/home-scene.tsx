@@ -11,7 +11,7 @@ export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
 
   const resumeClickHandler = () => {
-    window.open('isaac_mackle_cv_web.pdf')
+    window.open('assets/isaac_mackle_cv_web.pdf')
   }
 
   return (
