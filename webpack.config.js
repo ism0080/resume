@@ -21,6 +21,8 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: 'index.html',
   meta: {
     viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    description:
+      'Software Engineer who is always looking to learn more. Front-end focused with experience in React, Typescript. Get to know me',
   },
   minify: {
     collapseWhitespace: true,
