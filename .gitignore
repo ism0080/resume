@@ -1,6 +1,15 @@
+# packages
 node_modules/
-toDo
 yarn-error.log
 
-coverage/
+# local
+toDo
+.env
 .DS_Store
+
+# build
+dist/
+
+# test
+coverage/
+

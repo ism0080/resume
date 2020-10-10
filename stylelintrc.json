@@ -1,0 +1,16 @@
+{
+  "plugins": ["stylelint-prettier", "stylelint-declaration-block-no-ignored-properties"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended",
+    "stylelint-prettier/recommended",
+    "stylelint-config-prettier",
+    "stylelint-config-rational-order"
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "color-no-invalid-hex": true,
+    "value-keyword-case": null,
+    "plugin/declaration-block-no-ignored-properties": true
+  }
+}

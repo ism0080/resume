@@ -2,24 +2,38 @@
   "root": true,
   "parser": "@typescript-eslint/parser", // Allow ESLint to parse TypeScript
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended", // Uses recommended rules from @typescript-eslint
-    "plugin:@typescript-eslint/eslint-recommended", // Uses recommended rules from @typescript-eslint
-    "prettier",
+    "plugin:@typescript-eslint/recommended", // Recommended rules from @typescript-eslint
     "prettier/@typescript-eslint", // Disables ESLint rules that would conflict with Prettier
-    "plugin:prettier/recommended" // Links Prettier errors into ESLint errors
+    "plugin:prettier/recommended", // Links Prettier errors into ESLint errors
+    "plugin:react/recommended", // Recommended rules for React (fixes: 'no-unused-vars' on JSX imports)
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended", // Recommended rules for accessibility
+    "plugin:css-modules/recommended",
+    "plugin:jest-formatting/recommended" // Adds padding between test blocks
+    // "plugin:react-hooks/recommended" // TODO: Add this plugin (Enforces Rules of Hooks)
   ],
+  "plugins": ["react", "jest", "css-modules", "simple-import-sort", "import", "jest-formatting"],
   "parserOptions": {
-    "project": "./tsconfig.json",
     "ecmaVersion": 2018, // Parse modern ECMAScript features
     "sourceType": "module", // Allow module imports
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "ignorePatterns": ["node_modules", "**/*.test.*", "**/*.spec.*", "application"],
   "rules": {
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "ignoreDOMComponents": false,
+        "ignoreRefs": true,
+        "allowArrowFunctions": true,
+        "allowFunctions": false,
+        "allowBind": true
+      }
+    ], // Prevents inline arrow functions (lambdas) and bindings
+    "react/jsx-no-useless-fragment": "error", // Prevents unnecessary usage of fragments
     "for-direction": "warn", // Check for-loop increments counter
     "getter-return": "error", // Enforce return statements in getters
     "no-async-promise-executor": "error", // Disallow using an async function as a Promise executor
@@ -37,19 +51,65 @@
     "no-empty-character-class": "error", // Disallow empty character class in regular expressions
     "no-ex-assign": "error", // Prevents destructive reassigning of exception errors
     "no-extra-boolean-cast": "warn", // Disallows unnecessary boolean casts
+    "prefer-arrow-callback": "error", // Convert function to an arrow when possible
+    "max-lines-per-function": ["error", 160],
+    "max-lines": ["error", 325],
+    "max-len": ["error", 140], // Sets the limit on line length
+    "arrow-body-style": ["error", "as-needed"], // Controls the use of braces around arrow function body
+    "no-magic-numbers": ["error", { "ignore": [0, 1] }], // Ensures that special numbers are declared as constants
     "no-extra-parens": [
       "error",
       "all",
       {
         "returnAssign": true,
         "nestedBinaryExpressions": false,
-        "ignoreJSX": "single-line",
+        "ignoreJSX": "all", // TODO: Should be 'single-line', but conflicts with Prettier
         "enforceForArrowConditionals": true,
         "enforceForSequenceExpressions": true
       }
     ],
     "no-extra-semi": "warn", // Disallows additional semicolons
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "no-unexpected-multiline": "error", // Fixes issues caused by removing semicolons
+    "@typescript-eslint/interface-name-prefix": [
+      "off", // TODO: Remove this once interfaces are updated
+      {
+        "prefixWithI": "never"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "sort-imports": "off",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "padding-line-between-statements": [
+      "error",
+      // Requires blank lines before all return statements
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      // Requires blank lines after every sequence of variables
+      { "blankLine": "always", "prev": ["const", "let"], "next": "*" },
+      { "blankLine": "any", "prev": ["const", "let"], "next": ["const", "let"] },
+      // Requires blank lines between clauses in switch statements
+      { "blankLine": "always", "prev": ["case", "default"], "next": "*" }
+    ],
+    "import/no-duplicates": "error",
+    "simple-import-sort/sort": [
+      "error",
+      {
+        "groups": [
+          // Packages. `react` related packages come first.
+          ["^react", "^@?\\w"],
+          // Internal packages.
+          ["^(@project)(/.*|$)"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Absolute imports and other imports such as Vue-style `@/foo`.
+          // Anything that does not start with a dot.
+          ["^[^.]"],
+          // Relative imports.
+          // Anything that starts with a dot.
+          ["^\\."]
+        ]
+      }
+    ]
   },
   "noInlineConfig": false,
   "settings": {
@@ -59,10 +119,44 @@
   },
   "overrides": [
     {
-      // Configure custom rules for files matching the specific pattern, using a global eslint and then extending it in specific eslints would be better, using where appropriate
+      "files": ["./*.config.js"],
+      "rules": {
+        "no-magic-numbers": "off"
+      }
+    },
+    {
+      "files": ["./packages/mock-data/**/*"],
+      "rules": {
+        "max-lines": "off",
+        "max-len": "off",
+        "no-magic-numbers": "off"
+      }
+    },
+    {
+      "files": ["./packages/interfaces/**/*"],
+      "rules": {
+        "no-magic-numbers": "off"
+      }
+    },
+    {
+      "files": ["@types/*"],
+      "rules": {
+        "no-magic-numbers": "off"
+      }
+    },
+    {
+      // TODO: Setup a specific eslint config for unit test files (matching the pattern below)
       "files": ["*.test.*", "*.spec.*"],
       "rules": {
-        "no-unused-expressions": "warn"
+        "no-unused-expressions": "warn",
+        "no-magic-numbers": "off"
+      }
+    },
+    {
+      // TODO: Setup a specific eslint config for e2e test files (matching the pattern below)
+      "files": ["*.e2e.*"],
+      "rules": {
+        "jest/expect-expect": "off" // Removes requirement for `expect` within each test
       }
     }
   ]

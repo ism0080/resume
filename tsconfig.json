@@ -1,35 +1,22 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "noImplicitThis": true,
-    "jsx": "react",
-    "baseUrl": "src",
-    "outDir": "dist",
+    "strict": true,
+    "declaration": true,
+    "outDir": "build",
     "target": "es5",
     "lib": ["dom", "es2015"],
-    "allowJs": true,
-    "checkJs": false,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "resolveJsonModule": true,
-    "strictNullChecks": true,
-    "module": "esnext",
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "pretty": true,
-    "declaration": true,
-    "esModuleInterop": true,
+    "allowJs": false,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "isolatedModules": false,
-    "noEmit": true,
-    "typeRoots": ["node_modules/@types"]
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "allowUnreachableCode": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "typeRoots": ["./node_modules/@types/", "./@types/"]
   },
-  "include": ["./src/**/*", "**/*", "./**/*.d.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
-  "awesomeTypescriptLoaderOptions": {
-    "reportFiles": ["./src/**/*"]
-  }
+  "include": ["packages/**/*", "@types"],
+  "exclude": ["node_modules", "applications", "build", "coverage"]
 }

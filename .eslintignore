@@ -1,0 +1,14 @@
+# don't ever lint node_modules
+node_modules
+
+# don't lint build output (TODO: update with new build location)
+build
+build
+.cache
+public
+
+# don't lint coverage
+coverage
+
+# don't lint task runner
+packages/common/runner
