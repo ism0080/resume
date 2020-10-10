@@ -1,6 +1,6 @@
 module.exports = {
   displayName: 'web',
-  testMatch: ['<rootDir>/packages/**/*.test.{ts,tsx}'],
+  testMatch: ['<rootDir>/packages/**/*.spec.{ts,tsx}'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   },
@@ -10,7 +10,7 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': 'test-file-stub',
     '\\.(css|less)$': 'identity-obj-proxy'
   },
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     '<rootDir>/packages/**/*.{ts,tsx}',
     '!<rootDir>/**/index.ts',
@@ -23,10 +23,10 @@ module.exports = {
   coveragePathIgnorePatterns: ['/node_modules/', '<rootDir>/packages/contracts/'],
   coverageThreshold: {
     global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
+      branches: 50,
+      functions: 60,
+      lines: 80,
+      statements: 80
     }
   },
   setupFiles: ['jest-canvas-mock']

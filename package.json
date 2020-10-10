@@ -46,6 +46,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "husky": "^3.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
     "jest-canvas-mock": "^2.2.0",
     "lerna": "^3.20.2",
