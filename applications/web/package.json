@@ -2,6 +2,7 @@
   "name": "@project/web",
   "version": "0.0.1",
   "private": false,
+  "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --mode development --progress",
     "build": "webpack --mode production"

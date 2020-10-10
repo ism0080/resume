@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { SpinnerProps } from './spinner.interface'
-import less from './spinner.less'
+import { LoaderProps } from './loader.interface'
+import less from './loader.less'
 
 /**
  * Renders a spinning loading indicator with optional color
@@ -18,6 +18,6 @@ import less from './spinner.less'
  *  tint={'blue'}
  * />
  */
-export const Spinner = ({ testID, color = '#fff', tint = 'transparent' }: SpinnerProps) => (
-  <div data-testid={testID} className={less.spinner} style={{ borderColor: color, borderRightColor: tint }} />
+export const Loader = ({ testID, color = '#fff' }: LoaderProps) => (
+  <div data-testid={testID} className={less.loader} style={{ color: color }} />
 )
