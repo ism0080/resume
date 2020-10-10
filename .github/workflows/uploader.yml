@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.2
         with:
-          node-version: 10.x
+          node-version: 12.x
       - name: Install
         run: |
           yarn install
@@ -24,7 +24,7 @@ jobs:
         run: |
           yarn test
       - name: Create Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: build_artifact
           path: ./dist
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: build_artifact
       - name: Configure AWS Credentials
