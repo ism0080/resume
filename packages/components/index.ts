@@ -1,5 +1,4 @@
 export * from './data'
-export * from './default-button'
 export * from './footer'
 export * from './header'
 export * from './home'

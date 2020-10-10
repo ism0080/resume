@@ -3,9 +3,9 @@ import React from 'react'
 import { useBreakpoints } from '@project/hooks'
 import { theme } from '@project/web/theme'
 
-import less from './default-button.less'
+import less from './button.less'
 
-export const DefaultButton = ({ title, onClick }: DefaultButtonProps) => {
+export const Button = ({ title, onClick }: ButtonProps) => {
   const { isMobile } = useBreakpoints()
 
   const width = {

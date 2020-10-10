@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { DefaultButton, Jumbotron, Section, StackNavigation } from '@project/components'
+import { Jumbotron, Section, StackNavigation } from '@project/components'
 import { EXPERTISE } from '@project/components/data'
+import { Button } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
 import { SvgRenderer } from '@project/res'
 import { theme } from '@project/web/theme'
@@ -62,7 +63,7 @@ export const HomeScene = () => {
             height={isMobile ? magic.height.small : magic.height.big}
             fill={theme.colors.defaultAccent}
           />
-          <DefaultButton testID='default-button-cv' title='View CV' onClick={resumeClickHandler} />
+          <Button testID='button-cv' title='View CV' onClick={resumeClickHandler} />
         </Section>
       </div>
     </StackNavigation>
