@@ -1,0 +1,5 @@
+type Expertise {
+  id: ID!
+  title: String!
+  content: String!
+}

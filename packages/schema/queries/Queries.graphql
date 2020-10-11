@@ -1,0 +1,5 @@
+type Query {
+  links: [Links]!
+  expertise: [Expertise]!
+  me: Me!
+}

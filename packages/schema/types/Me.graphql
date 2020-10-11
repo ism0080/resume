@@ -1,0 +1,5 @@
+type Me {
+  id: ID!
+  name: String!
+  job: String!
+}
