@@ -19,7 +19,7 @@ jobs:
           yarn install
       - name: Build
         run: |
-          yarn build
+          yarn build:web
       - name: Test
         run: |
           yarn test
@@ -43,7 +43,7 @@ jobs:
           yarn install
       - name: Build
         run: |
-          yarn build
+          yarn build:sb
       - name: Create Artifact
         uses: actions/upload-artifact@v2
         with:
