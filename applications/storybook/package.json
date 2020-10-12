@@ -7,7 +7,7 @@
     "license": "ISC",
     "scripts": {
       "start": "start-storybook -c ./",
-      "build": "build-storybook -o ../../dist -c ./"
+      "build": "build-storybook -o ./dist -c ./"
     },
     "dependencies": {
       "@storybook/addon-viewport": "^5.3.19",

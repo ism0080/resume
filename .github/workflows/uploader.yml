@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   job_1:
-    name: Build Artifact
+    name: Build Web Artifact
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -26,24 +26,44 @@ jobs:
       - name: Create Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: build_artifact
+          name: web_artifact
           path: ./dist
 
   job_2:
-    name: Upload to AWS
-    needs: job_1
+    name: Build Storybook Artifact
     runs-on: ubuntu-latest
     steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v1
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v2.1.2
         with:
-          name: build_artifact
+          node-version: 12.x
+      - name: Install
+        run: |
+          yarn install
+      - name: Build
+        run: |
+          yarn build
+      - name: Create Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: storybook_artifact
+          path: ./dist
+
+  job_3:
+    name: Upload to AWS
+    needs: [job_1, job_2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v2
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.CF_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.CF_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: ap-southeast-2
       - name: Deploy to S3
         run: |
-          aws s3 sync build_artifact s3://${{ secrets.CF_S3_BUCKET }} --delete
+          aws s3 sync web_artifact s3://${{ secrets.CF_S3_BUCKET }} --delete
+          aws s3 sync storybook_artifact s3://${{ secrets.CF_S3_BUCKET }}/storybook
