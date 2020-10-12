@@ -5,4 +5,4 @@ import { Loader } from '@project/elements'
 
 const TESTID = 'loader'
 
-storiesOf('Elements/Spinner', module).add('Standard', () => <Loader testID={TESTID} color='#000' />)
+storiesOf('Elements/Loader', module).add('Standard', () => <Loader testID={TESTID} color='#000' />)
