@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: web_artifact
-          path: ./dist
+          path: ./applications/web/dist
 
   job_2:
     name: Build Storybook Artifact
@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: storybook_artifact
-          path: ./dist
+          path: ./applications/storybook/dist
 
   job_3:
     name: Upload to AWS
