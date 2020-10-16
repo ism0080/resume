@@ -21,8 +21,7 @@ const server = new ApolloServer({
   playground: true,
   validationRules: [depthLimit(limit)],
   context: ({ req }) => ({
-    // authScope: req.headers.authorization == process.env.AUTH ? false : true
-    authScope: false
+    authScope: req.headers.authorization == process.env.AUTH ? true : false
   })
 })
 

@@ -9,7 +9,7 @@ export const meQuery = gql`
   }
 `
 
-export interface MeQueryInterface {
+export interface MeQuery {
   name: string
   job: string
 }

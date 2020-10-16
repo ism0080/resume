@@ -1,17 +1,17 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 
-import { meLinksQuery } from '@project/business/queries'
+import { MeLinksData, meLinksQuery } from '@project/business/queries'
 import { Footer, Header } from '@project/components'
 import { Loader } from '@project/elements'
 
 import less from './stack-navigation.less'
 
 export const StackNavigation = ({ children }: StackNavigationProps) => {
-  const { loading, error, data } = useQuery(meLinksQuery)
+  const { loading, error, data } = useQuery<MeLinksData>(meLinksQuery)
 
   if (loading) return <Loader testID='stack-loader' />
-  if (error) return <p>Error :(</p>
+  if (error || !data) return <p>Error :(</p>
 
   return (
     <div>

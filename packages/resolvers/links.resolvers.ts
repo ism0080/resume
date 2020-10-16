@@ -10,7 +10,7 @@ const links = [
 const linksResolver: IResolvers = {
   Query: {
     links(parent, args, context, info): { title: string; url: string }[] {
-      if (context.authScope) throw new AuthenticationError('not authenticated')
+      if (!context.authScope) throw new AuthenticationError('not authenticated')
 
       return links
     }

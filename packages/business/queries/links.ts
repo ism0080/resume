@@ -9,7 +9,7 @@ export const linksQuery = gql`
   }
 `
 
-export interface LinksQueryInterface {
+export interface LinksQuery {
   title: string
   url: string
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 
-import { expertiseQuery, ExpertiseQueryInterface } from '@project/business/queries'
+import { ExpertiseQuery, expertiseQuery } from '@project/business/queries'
 import { Jumbotron, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
@@ -12,7 +12,7 @@ import less from './home-scene.less'
 
 export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
-  const { loading, error, data } = useQuery(expertiseQuery)
+  const { loading, error, data } = useQuery<ExpertiseQuery>(expertiseQuery)
 
   if (loading) return <Loader testID='home-loader' />
   if (error) return <p>Error :(</p>
@@ -52,13 +52,14 @@ export const HomeScene = () => {
               padding: isMobile ? magic.div.padding : undefined
             }}
           >
-            {data.expertise.map(({ title, content }: ExpertiseQueryInterface) => (
-              <div key={title}>
-                <p>
-                  <strong>{title}</strong> - {content}
-                </p>
-              </div>
-            ))}
+            {data &&
+              data.expertise.map(({ title, content }) => (
+                <div key={title}>
+                  <p>
+                    <strong>{title}</strong> - {content}
+                  </p>
+                </div>
+              ))}
           </div>
         </Section>
         <Section testID='section-cv' color='dark' twoColumn>

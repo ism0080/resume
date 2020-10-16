@@ -13,7 +13,7 @@ const expertise = [
 const expertiseResolver: IResolvers = {
   Query: {
     expertise(parent, args, context, info): { title: string; content: string }[] {
-      if (context.authScope) throw new AuthenticationError('not authenticated')
+      if (!context.authScope) throw new AuthenticationError('not authenticated')
 
       return expertise
     }

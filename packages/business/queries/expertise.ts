@@ -9,7 +9,11 @@ export const expertiseQuery = gql`
   }
 `
 
-export interface ExpertiseQueryInterface {
+export interface Expertise {
   title: string
   content: string
+}
+
+export interface ExpertiseQuery {
+  expertise: [Expertise]
 }
