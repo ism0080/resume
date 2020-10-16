@@ -1,0 +1,7 @@
+{
+    "name": "@project/apollo",
+    "private": true,
+    "version": "0.0.1",
+    "main": "index.ts"
+  }
+  

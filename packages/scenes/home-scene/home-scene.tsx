@@ -1,8 +1,9 @@
 import React from 'react'
+import { useQuery } from '@apollo/client'
 
+import { expertiseQuery, ExpertiseQueryInterface } from '@project/business/queries'
 import { Jumbotron, Section, StackNavigation } from '@project/components'
-import { EXPERTISE } from '@project/components/data'
-import { Button } from '@project/elements'
+import { Button, Loader } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
 import { SvgRenderer } from '@project/res'
 import { theme } from '@project/web/theme'
@@ -11,6 +12,10 @@ import less from './home-scene.less'
 
 export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
+  const { loading, error, data } = useQuery(expertiseQuery)
+
+  if (loading) return <Loader testID='home-loader' />
+  if (error) return <p>Error :(</p>
 
   const magic = {
     width: {
@@ -47,10 +52,10 @@ export const HomeScene = () => {
               padding: isMobile ? magic.div.padding : undefined
             }}
           >
-            {EXPERTISE.map((skill) => (
-              <div key={skill.title}>
+            {data.expertise.map(({ title, content }: ExpertiseQueryInterface) => (
+              <div key={title}>
                 <p>
-                  <strong>{skill.title}</strong> - {skill.content}
+                  <strong>{title}</strong> - {content}
                 </p>
               </div>
             ))}
