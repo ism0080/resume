@@ -1,0 +1,29 @@
+service: apollo-lambda
+provider:
+  name: aws
+  stage: dev
+  region: ap-southeast-2
+  runtime: nodejs12.x
+package:
+  exclude:
+    - node_modules
+    - .gitignore
+    - README.md
+    - yarn.lock
+functions:
+  graphql:
+    # this is formatted as <FILENAME>.<HANDLER>
+    handler: graphql.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin

@@ -1,5 +1,0 @@
-type Links {
-  id: ID!
-  title: String!
-  url: String!
-}

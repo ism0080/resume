@@ -83,6 +83,9 @@
       "stylelint --fix"
     ]
   },
+  "resolutions": {
+    "graphql": "graphql@^14.5.3"
+  },
   "workspaces": [
     "packages/**",
     "applications/**"
