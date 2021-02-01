@@ -12,7 +12,7 @@
     "start:web": "cd applications/web; yarn start",
     "start:sb": "cd applications/storybook; yarn start",
     "__build__": "",
-    "build": "yarn build:web",
+    "build": "yarn build:web; yarn build:sb",
     "build:web": "cd applications/web; yarn build",
     "build:sb": "cd applications/storybook; yarn build",
     "__test__": "",

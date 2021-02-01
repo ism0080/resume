@@ -8,8 +8,9 @@ toDo
 .DS_Store
 
 # build
-dist/
-build/
+dist
+build
+build
 
 # test
 coverage/
@@ -17,3 +18,5 @@ coverage/
 # variables
 .env
 
+
+.vercel

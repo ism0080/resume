@@ -1,5 +1,5 @@
 {
-  "GRAPH_URL": "https://graph.isaacmackle.com/api",
+  "GRAPH_URL": "https://resume-dun.vercel.app/api",
   "GRAPH_AUTH": "ism0080",
   "ENVIRONMENT": "PROD"
 }
