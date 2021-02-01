@@ -8,10 +8,9 @@
   "private": true,
   "scripts": {
     "start": "yarn start:all",
-    "start:all": "concurrently \"yarn start:web\" \"yarn start:gql\"",
+    "start:all": "yarn start:web",
     "start:web": "cd applications/web; yarn start",
     "start:sb": "cd applications/storybook; yarn start",
-    "start:gql": "cd applications/graphql; yarn start",
     "__build__": "",
     "build": "yarn build:web",
     "build:web": "cd applications/web; yarn build",
@@ -82,9 +81,6 @@
     "*.less": [
       "stylelint --fix"
     ]
-  },
-  "resolutions": {
-    "graphql": "graphql@^14.5.3"
   },
   "workspaces": [
     "packages/**",
