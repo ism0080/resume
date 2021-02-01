@@ -20,9 +20,9 @@ jobs:
       - name: Build
         run: |
           yarn build:web
-      - name: Test
-        run: |
-          yarn test
+      # - name: Test
+      #   run: |
+      #     yarn test
       - name: Create Artifact
         uses: actions/upload-artifact@v2
         with:
