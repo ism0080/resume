@@ -1,5 +1,8 @@
 module.exports = {
   displayName: 'web',
+  globals: {
+    __DEV__: true
+  },
   testMatch: ['<rootDir>/packages/**/*.spec.{ts,tsx}'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'

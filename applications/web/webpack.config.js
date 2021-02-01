@@ -159,7 +159,10 @@ module.exports = {
     htmlPlugin,
     hotModulePlugin,
     copyWebpackPlugin,
-    new webpack.WatchIgnorePlugin([/less\.d\.ts$/, /scss\.d\.ts$/])
+    new webpack.WatchIgnorePlugin([/less\.d\.ts$/, /scss\.d\.ts$/]),
+    new webpack.DefinePlugin({
+      __DEV__: isDev
+    })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.scss', '.module.scss', '.css']

@@ -1,7 +1,9 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
-import config from '@project/web/config.json'
+import { getApplicationConfig } from '@project/business/common/get-application-config'
+
+const config = getApplicationConfig()
 
 const httpLink = createHttpLink({
   uri: config.GRAPH_URL

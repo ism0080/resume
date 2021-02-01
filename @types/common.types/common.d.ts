@@ -7,3 +7,5 @@ interface CommonStyles {
 }
 
 type CommonChildren = React.ReactNode | React.ReactNode[]
+
+declare const __DEV__: any
