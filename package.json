@@ -7,7 +7,8 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "yarn start:web",
+    "start": "yarn start:all",
+    "start:all": "yarn start:web",
     "start:web": "cd applications/web; yarn start",
     "start:sb": "cd applications/storybook; yarn start",
     "__build__": "",
@@ -82,7 +83,7 @@
     ]
   },
   "workspaces": [
-    "packages/*",
-    "applications/*"
+    "packages/**",
+    "applications/**"
   ]
 }

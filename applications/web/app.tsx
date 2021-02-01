@@ -1,7 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { ApolloProvider } from '@apollo/client'
 
+import { client } from '@project/apollo'
 import { HomeScene } from '@project/scenes'
 
 import less from './global.less'
@@ -10,11 +12,13 @@ import { theme } from './theme'
 
 const App = () => (
   <div className={less['page-container']} style={{ backgroundColor: theme.colors.defaultBackground }}>
-    <Router>
-      <Switch>
-        <Route path={NavigationConstants.home} component={HomeScene} />
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <Route path={NavigationConstants.home} component={HomeScene} />
+        </Switch>
+      </Router>
+    </ApolloProvider>
   </div>
 )
 
