@@ -1,6 +1,15 @@
 # Resume
 
-![S3 Bucket Uploader](https://github.com/ism0080/resume/workflows/S3%20Bucket%20Uploader/badge.svg)
+This is a monorepo with 3 applications:
 
-## My personal website
-A React Web App hosted in AWS
+- React Frontend
+- Storybook UI Component Explorer
+- Serverless GraphQL API
+
+The above is currently hosted with Vercel
+
+## [React Frontend](https://isaacmackle.com)
+
+## [Storybook UI](https://sb.isaacmackle.com)
+
+## [GraphQL Api](https://graph.isaacmackle.com/api)
