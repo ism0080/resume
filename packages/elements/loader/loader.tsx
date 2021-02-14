@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import { LoaderProps } from './loader.interface'
 import less from './loader.less'
@@ -16,6 +17,12 @@ import less from './loader.less'
  *  color={'red'}
  * />
  */
-export const Loader = ({ testID, color = '#fff' }: LoaderProps) => (
-  <div data-testid={testID} className={less.loader} style={{ color: color }} />
-)
+
+export const Loader = ({ testID, color = '#fff', isCentered }: LoaderProps) => {
+  const loaderClass = classNames({
+    [less.loader]: true,
+    [less.centered]: isCentered
+  })
+
+  return <div data-testid={testID} className={loaderClass} style={{ color: color }} />
+}

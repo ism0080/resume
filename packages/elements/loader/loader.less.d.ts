@@ -2,6 +2,7 @@
 // Any changes you make to this file will be overwritten.
 declare namespace LoaderLessNamespace {
   export interface ILoaderLess {
+    centered: string
     load7: string
     loader: string
   }

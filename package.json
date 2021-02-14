@@ -8,9 +8,10 @@
   "private": true,
   "scripts": {
     "start": "yarn start:all",
-    "start:all": "yarn start:web",
+    "start:all": "concurrently \"yarn start:web\" \"yarn start:graph\"",
     "start:web": "cd applications/web; yarn start",
     "start:sb": "cd applications/storybook; yarn start",
+    "start:graph": "cd applications/graphql; yarn start",
     "__build__": "",
     "build": "yarn build:web; yarn build:sb",
     "build:web": "cd applications/web; yarn build",

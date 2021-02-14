@@ -4,4 +4,5 @@ export interface LoaderProps extends CommonProps {
    * the majority of the loader
    */
   color?: string
+  isCentered?: boolean
 }

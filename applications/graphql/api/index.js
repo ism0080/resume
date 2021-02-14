@@ -1,7 +1,8 @@
 import { ApolloServer } from 'apollo-server-micro'
 import Cors from 'micro-cors'
-import { typeDefs } from './schemas'
+
 import { resolvers } from './resolvers'
+import { typeDefs } from './schemas'
 
 const cors = Cors()
 const server = new ApolloServer({
@@ -22,7 +23,9 @@ export const config = {
 export default cors((req, res) => {
   if (req.method === 'OPTIONS') {
     res.end()
+
     return
   }
+
   return server.createHandler({ path: '/api' })(req, res)
 })

@@ -1,21 +1,22 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 
-import { ExpertiseQuery, expertiseQuery } from '@project/business/queries'
+import { MeExpertiseData, meExpertiseQuery } from '@project/business/queries'
 import { Jumbotron, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
 import { SvgRenderer } from '@project/res'
+import { ErrorScene } from '@project/scenes'
 import { theme } from '@project/web/theme'
 
 import less from './home-scene.less'
 
 export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
-  const { loading, error, data } = useQuery<ExpertiseQuery>(expertiseQuery)
+  const { loading, error, data } = useQuery<MeExpertiseData>(meExpertiseQuery)
 
-  if (loading) return <Loader testID='home-loader' />
-  if (error) return <p>Error :(</p>
+  if (loading) return <Loader testID='home-loader' color='#000' isCentered />
+  if (error || !data) return <ErrorScene testID='home-error' text='An Error Occurred' />
 
   const magic = {
     width: {
@@ -39,7 +40,7 @@ export const HomeScene = () => {
   return (
     <StackNavigation>
       <div className={less.container} data-testid='home-scene'>
-        <Jumbotron testID='jumbotron' title='Isaac Mackle' subtitle='Software Engineer' />
+        <Jumbotron testID='jumbotron' title={data.me.name} subtitle={data.me.job} />
         <Section testID='section-skills' color='light'>
           <h1 style={{ textAlign: 'center' }}>Expertise</h1>
           <div

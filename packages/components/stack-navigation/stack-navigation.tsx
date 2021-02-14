@@ -4,14 +4,15 @@ import { useQuery } from '@apollo/client'
 import { MeLinksData, meLinksQuery } from '@project/business/queries'
 import { Footer, Header } from '@project/components'
 import { Loader } from '@project/elements'
+import { ErrorScene } from '@project/scenes'
 
 import less from './stack-navigation.less'
 
 export const StackNavigation = ({ children }: StackNavigationProps) => {
   const { loading, error, data } = useQuery<MeLinksData>(meLinksQuery)
 
-  if (loading) return <Loader testID='stack-loader' />
-  if (error || !data) return <p>Error :(</p>
+  if (loading) return <Loader testID='stack-loader' color='#000' isCentered />
+  if (error || !data) return <ErrorScene testID='stack-error' text='An Error Occurred' />
 
   return (
     <div>

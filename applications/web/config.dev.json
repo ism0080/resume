@@ -1,5 +1,5 @@
 {
-  "GRAPH_URL": "https://cors-anywhere.herokuapp.com/https://resume-graph.vercel.app/api",
+  "GRAPH_URL": "https://cors-anywhere.herokuapp.com/https://graph.isaacmackle.com/api",
   "GRAPH_AUTH": "ism0080",
   "ENVIRONMENT": "DEV"
 }

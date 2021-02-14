@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/client'
 
 import { client } from '@project/apollo'
-import { HomeScene } from '@project/scenes'
+import { ErrorScene, HomeScene } from '@project/scenes'
 
 import less from './global.less'
 import { NavigationConstants } from './navigation-constants'
@@ -15,7 +15,10 @@ const App = () => (
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Route path={NavigationConstants.home} component={HomeScene} />
+          <Route exact path={NavigationConstants.home} component={HomeScene} />
+          <Route path='*'>
+            <ErrorScene testID='route-error' text='Page Not Found' />
+          </Route>
         </Switch>
       </Router>
     </ApolloProvider>
