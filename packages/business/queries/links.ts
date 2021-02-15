@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const linksQuery = gql`
+export const GET_LINKS = gql`
   query {
     links {
       title

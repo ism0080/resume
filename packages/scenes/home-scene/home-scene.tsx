@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 
-import { MeExpertiseData, meExpertiseQuery } from '@project/business/queries'
+import { GET_ME_EXPERTISE, MeExpertiseData } from '@project/business/queries'
 import { Jumbotron, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
@@ -13,7 +13,7 @@ import less from './home-scene.less'
 
 export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
-  const { loading, error, data } = useQuery<MeExpertiseData>(meExpertiseQuery)
+  const { loading, error, data } = useQuery<MeExpertiseData>(GET_ME_EXPERTISE)
 
   if (loading) return <Loader testID='home-loader' color='#000' isCentered />
   if (error || !data) return <ErrorScene testID='home-error' text='An Error Occurred' />

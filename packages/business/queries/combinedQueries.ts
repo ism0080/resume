@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 import { Expertise, LinksQuery, MeQuery } from '.'
 
-export const meLinksQuery = gql`
+export const GET_ME_LINKS = gql`
   query {
     me {
       name
@@ -15,7 +15,7 @@ export const meLinksQuery = gql`
   }
 `
 
-export const meExpertiseQuery = gql`
+export const GET_ME_EXPERTISE = gql`
   query {
     me {
       name

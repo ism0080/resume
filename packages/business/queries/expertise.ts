@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const expertiseQuery = gql`
+export const GET_EXPERTISE = gql`
   query {
     expertise {
       title
