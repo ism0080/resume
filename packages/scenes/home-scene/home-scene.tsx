@@ -1,8 +1,9 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
+import { Box, Center, Stack } from '@chakra-ui/react'
 
 import { GET_ME_EXPERTISE, MeExpertiseData } from '@project/business/queries'
-import { Jumbotron, Section, StackNavigation } from '@project/components'
+import { Jumbotron, Project, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
 import { SvgRenderer } from '@project/res'
@@ -41,27 +42,52 @@ export const HomeScene = () => {
     <StackNavigation>
       <div className={less.container} data-testid='home-scene'>
         <Jumbotron testID='jumbotron' title={data.me.name} subtitle={data.me.job} />
+        <Section testID='section-spotlight' color='light'>
+          <Center fontSize='3xl' paddingBottom='5'>
+            Projects
+          </Center>
+          <Stack direction={['column', 'row']} spacing='16px' justify='center' wrap='wrap' align='center'>
+            <Project
+              imageUrl='https://s3-ap-southeast-2.amazonaws.com/graph.isaacmackle.com-images/lyric-project.png'
+              imageAlt='Lyrc &bull; Random Song Lyric'
+              title='Lyrc: Random Song Lyric'
+              description='Simple use of Genius-API to search for an artist and return a random song lyric'
+              websiteUrl='https://lyric.mackle.im'
+              sourceCodeUrl='https://github.com/ism0080/random-song-lyric'
+              testID='home-project-lyrc'
+            />
+            <Project
+              imageUrl='https://s3-ap-southeast-2.amazonaws.com/graph.isaacmackle.com-images/comic-project.png'
+              imageAlt='Comic Strip Readme'
+              title='Comic Strip Readme &bull; GitHub Action'
+              description='This GitHub Workflow updates your readme with the latest XKCD comic'
+              websiteUrl='https://github.com/marketplace/actions/comic-strip-readme'
+              sourceCodeUrl='https://github.com/ism0080/comicstrip-readme'
+              testID='home-project-comic'
+            />
+          </Stack>
+        </Section>
         <Section testID='section-skills' color='light'>
-          <h1 style={{ textAlign: 'center' }}>Expertise</h1>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              width: isMobile ? undefined : magic.div.width,
-              margin: '0 auto',
-              padding: isMobile ? magic.div.padding : undefined
-            }}
-          >
-            {data &&
-              data.expertise.map(({ title, content }) => (
-                <div key={title}>
-                  <p>
+          <Center paddingBottom='5' fontSize='3xl'>
+            Expertise
+          </Center>
+          <Center>
+            <Stack
+              direction={['column', 'row']}
+              spacing='16px'
+              justify='space-evenly'
+              wrap='wrap'
+              align='center'
+              maxW={['100%', '80%', '50%', '40%']}
+            >
+              {data &&
+                data.expertise.map(({ title, content }) => (
+                  <Box paddingBottom='2' key={title}>
                     <strong>{title}</strong> - {content}
-                  </p>
-                </div>
-              ))}
-          </div>
+                  </Box>
+                ))}
+            </Stack>
+          </Center>
         </Section>
         <Section testID='section-cv' color='dark' twoColumn>
           <SvgRenderer

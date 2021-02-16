@@ -3,6 +3,7 @@
 declare namespace HomeSceneLessNamespace {
   export interface IHomeSceneLess {
     container: string
+    heading: string
   }
 }
 
