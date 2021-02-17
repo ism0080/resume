@@ -5,6 +5,7 @@ export const typeDefs = gql`
     links: [Links]!
     expertise: [Expertise]!
     me: Me!
+    projects: [Project]!
   }
   type Expertise {
     id: ID!
@@ -20,5 +21,14 @@ export const typeDefs = gql`
     id: ID!
     name: String!
     job: String!
+  }
+  type Project {
+    testID: String!
+    imageUrl: String!
+    imageAlt: String!
+    websiteUrl: String!
+    sourceCodeUrl: String!
+    title: String!
+    description: String!
   }
 `
