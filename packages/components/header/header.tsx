@@ -2,7 +2,6 @@ import React from 'react'
 import { Box, Flex, Spacer } from '@chakra-ui/react'
 
 import { useBigNav } from '@project/hooks'
-import { theme } from '@project/web/theme'
 
 import less from './header.less'
 

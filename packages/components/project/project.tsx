@@ -1,9 +1,11 @@
 import React from 'react'
 import { Badge, Box, Image, Link } from '@chakra-ui/react'
 
+import less from './project.less'
+
 export const Project = ({ imageUrl, imageAlt, websiteUrl, sourceCodeUrl, title, description, testID }: ProjectProps) => (
   <Box data-testid={testID} maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-    <Image src={imageUrl} alt={imageAlt} pointerEvents='none' />
+    <Image className={less.image} src={imageUrl} alt={imageAlt} />
 
     <Box p='6'>
       <Box d='flex' alignItems='baseline'>
