@@ -44,9 +44,11 @@ export const HomeScene = () => {
           <Center fontSize='3xl' paddingBottom='5'>
             Projects
           </Center>
-          <Stack direction={['column', 'row']} spacing='16px' justify='center' wrap='wrap' align='center'>
-            {data && data.projects.map((props) => <Project key={props.testID} {...props} />)}
-          </Stack>
+          <Center>
+            <Stack direction={['column', 'column', 'row']} spacing='16px' justify='center' wrap='wrap' align='center' w={['90%', '100%']}>
+              {data && data.projects.map((props) => <Project key={props.testID} {...props} />)}
+            </Stack>
+          </Center>
         </Section>
         <Section testID='section-skills' color='light'>
           <Center paddingBottom='5' fontSize='3xl'>
@@ -54,12 +56,12 @@ export const HomeScene = () => {
           </Center>
           <Center>
             <Stack
-              direction={['column', 'row']}
+              direction={['column', 'column', 'row']}
               spacing='16px'
               justify='space-evenly'
               wrap='wrap'
               align='center'
-              maxW={['100%', '80%', '50%', '40%']}
+              maxW={['90%', '80%', '50%', '40%']}
             >
               {data &&
                 data.expertise.map(({ title, content }) => (
