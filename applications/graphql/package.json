@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "start": "vercel dev"
-  },
   "dependencies": {
     "apollo-server-micro": "^2.19.2",
     "micro-cors": "^0.1.1"

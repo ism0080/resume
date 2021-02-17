@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 /**
  * Returns true if scroll value is met
- * @param {number} scrollValue Scroll value the handler should check for
- * @return {boolean}
+ * @param scrollValue Scroll value the handler should check for
+ * @return isBigNav
  */
 export const useBigNav = (scrollValue: number) => {
   const [isBigNav, setIsBigNav] = useState<boolean>(true)

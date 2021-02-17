@@ -2,8 +2,6 @@
 // Any changes you make to this file will be overwritten.
 declare namespace HeaderLessNamespace {
   export interface IHeaderLess {
-    active: string
-    logo: string
     navbar: string
   }
 }

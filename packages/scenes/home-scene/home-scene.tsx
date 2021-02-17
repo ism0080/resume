@@ -1,19 +1,18 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
+import { Box, Center, Flex, Stack } from '@chakra-ui/react'
 
-import { GET_ME_EXPERTISE, MeExpertiseData } from '@project/business/queries'
-import { Jumbotron, Section, StackNavigation } from '@project/components'
+import { GET_ME_EXPERTISE_PROJECTS, MeExpertiseProjectsData } from '@project/business/queries'
+import { Jumbotron, Project, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
 import { useBreakpoints } from '@project/hooks'
 import { SvgRenderer } from '@project/res'
 import { ErrorScene } from '@project/scenes'
 import { theme } from '@project/web/theme'
 
-import less from './home-scene.less'
-
 export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
-  const { loading, error, data } = useQuery<MeExpertiseData>(GET_ME_EXPERTISE)
+  const { loading, error, data } = useQuery<MeExpertiseProjectsData>(GET_ME_EXPERTISE_PROJECTS)
 
   if (loading) return <Loader testID='home-loader' color='#000' isCentered />
   if (error || !data) return <ErrorScene testID='home-error' text='An Error Occurred' />
@@ -39,29 +38,37 @@ export const HomeScene = () => {
 
   return (
     <StackNavigation>
-      <div className={less.container} data-testid='home-scene'>
+      <Flex data-testid='home-scene' justify='center' direction='column' alignItems='center' w='100%'>
         <Jumbotron testID='jumbotron' title={data.me.name} subtitle={data.me.job} />
+        <Section testID='section-spotlight' color='light'>
+          <Center fontSize='3xl' paddingBottom='5'>
+            Projects
+          </Center>
+          <Stack direction={['column', 'row']} spacing='16px' justify='center' wrap='wrap' align='center'>
+            {data && data.projects.map((props) => <Project key={props.testID} {...props} />)}
+          </Stack>
+        </Section>
         <Section testID='section-skills' color='light'>
-          <h1 style={{ textAlign: 'center' }}>Expertise</h1>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              width: isMobile ? undefined : magic.div.width,
-              margin: '0 auto',
-              padding: isMobile ? magic.div.padding : undefined
-            }}
-          >
-            {data &&
-              data.expertise.map(({ title, content }) => (
-                <div key={title}>
-                  <p>
+          <Center paddingBottom='5' fontSize='3xl'>
+            Expertise
+          </Center>
+          <Center>
+            <Stack
+              direction={['column', 'row']}
+              spacing='16px'
+              justify='space-evenly'
+              wrap='wrap'
+              align='center'
+              maxW={['100%', '80%', '50%', '40%']}
+            >
+              {data &&
+                data.expertise.map(({ title, content }) => (
+                  <Box paddingBottom='2' key={title}>
                     <strong>{title}</strong> - {content}
-                  </p>
-                </div>
-              ))}
-          </div>
+                  </Box>
+                ))}
+            </Stack>
+          </Center>
         </Section>
         <Section testID='section-cv' color='dark' twoColumn>
           <SvgRenderer
@@ -72,7 +79,7 @@ export const HomeScene = () => {
           />
           <Button testID='button-cv' title='View CV' onClick={resumeClickHandler} />
         </Section>
-      </div>
+      </Flex>
     </StackNavigation>
   )
 }

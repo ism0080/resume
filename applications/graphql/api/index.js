@@ -1,4 +1,4 @@
-import { ApolloServer } from 'apollo-server-micro'
+import { ApolloServer, AuthenticationError } from 'apollo-server-micro'
 import Cors from 'micro-cors'
 
 import { resolvers } from './resolvers'
@@ -9,9 +9,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   playground: true,
-  context: ({ req }) => ({
-    authScope: req.headers.authorization == process.env.AUTH ? true : false
-  })
+  context: ({ req }) => {
+    if (req.headers.authorization !== process.env.AUTH) throw new AuthenticationError('Must provide Auth Header')
+  }
 })
 
 export const config = {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box, Flex, Spacer } from '@chakra-ui/react'
 
 import { useBigNav } from '@project/hooks'
 import { theme } from '@project/web/theme'
@@ -14,18 +15,21 @@ export const Header = ({ testID, title, subtitle }: HeaderProps) => {
   const isBigNav = useBigNav(magic.nav)
 
   return (
-    <div
+    <Flex
       data-testid={testID}
-      style={{
-        height: isBigNav ? 0 : magic.height,
-        backgroundColor: theme.colors.defaultAccent
-      }}
+      h={isBigNav ? 0 : magic.height}
+      bg='brand.accent'
       className={less.navbar}
+      alignItems='center'
+      padding={['0 10px', '0 20px']}
     >
-      <p data-testid={`${testID}.header-text`} className={less.logo} style={{ color: theme.colors.textLight }}>
+      <Box fontSize={['16px', '25px']} data-testid={`${testID}.header-text`} color='white'>
         {title}
-        <span data-testid={`${testID}.header-subtitle`}>{subtitle}</span>
-      </p>
-    </div>
+      </Box>
+      <Spacer />
+      <Box fontSize={['16px', '25px']} data-testid={`${testID}.header-subtitle`} fontWeight='thin' color='white'>
+        {subtitle}
+      </Box>
+    </Flex>
   )
 }

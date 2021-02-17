@@ -1,25 +1,19 @@
 import React from 'react'
-
-import less from './footer.less'
+import { Center, Link, Stack } from '@chakra-ui/react'
 
 export const Footer = ({ testID, title, links }: FooterProps) => (
-  <div data-testid={testID} className={less.footer}>
-    <p>{title}</p>
+  <div data-testid={testID}>
+    <Center paddingTop='5' paddingBottom='2'>
+      {title}
+    </Center>
     {links && (
-      <div data-testid={`${testID}.links`} className={less.links}>
+      <Stack data-testid={`${testID}.links`} direction='row' spacing='24px' justify='center' paddingBottom='5'>
         {links.map((link) => (
-          <a
-            data-testid={`${testID}.link.${link.title}`}
-            key={link.title}
-            href={link.url}
-            target='_blank'
-            rel='noopener noreferrer'
-            aria-label={link.title}
-          >
+          <Link data-testid={`${testID}.link.${link.title}`} key={link.title} href={link.url} isExternal={true} aria-label={link.title}>
             {link.title}
-          </a>
+          </Link>
         ))}
-      </div>
+      </Stack>
     )}
   </div>
 )

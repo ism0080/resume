@@ -11,7 +11,7 @@
     "start:all": "concurrently \"yarn start:web\" \"yarn start:graph\"",
     "start:web": "cd applications/web; yarn start",
     "start:sb": "cd applications/storybook; yarn start",
-    "start:graph": "cd applications/graphql; yarn start",
+    "start:graph": "vercel dev",
     "__build__": "",
     "build": "yarn build:web; yarn build:sb",
     "build:web": "cd applications/web; yarn build",

@@ -1,5 +1,5 @@
 {
-  "GRAPH_URL": "https://cors-anywhere.herokuapp.com/https://graph.isaacmackle.com/api",
-  "GRAPH_AUTH": "ism0080",
+  "GRAPH_URL": "http://localhost:3000/api",
+  "GRAPH_AUTH": "12345",
   "ENVIRONMENT": "DEV"
 }
