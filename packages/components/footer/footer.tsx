@@ -1,8 +1,6 @@
 import React from 'react'
 import { Center, Link, Stack } from '@chakra-ui/react'
 
-import less from './footer.less'
-
 export const Footer = ({ testID, title, links }: FooterProps) => (
   <div data-testid={testID}>
     <Center paddingTop='5' paddingBottom='2'>

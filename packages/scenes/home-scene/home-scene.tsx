@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { Box, Center, Stack } from '@chakra-ui/react'
+import { Box, Center, Flex, Stack } from '@chakra-ui/react'
 
 import { GET_ME_EXPERTISE, MeExpertiseData } from '@project/business/queries'
 import { Jumbotron, Project, Section, StackNavigation } from '@project/components'
@@ -40,7 +40,7 @@ export const HomeScene = () => {
 
   return (
     <StackNavigation>
-      <div className={less.container} data-testid='home-scene'>
+      <Flex data-testid='home-scene' justify='center' direction='column' alignItems='center' w='100%'>
         <Jumbotron testID='jumbotron' title={data.me.name} subtitle={data.me.job} />
         <Section testID='section-spotlight' color='light'>
           <Center fontSize='3xl' paddingBottom='5'>
@@ -98,7 +98,7 @@ export const HomeScene = () => {
           />
           <Button testID='button-cv' title='View CV' onClick={resumeClickHandler} />
         </Section>
-      </div>
+      </Flex>
     </StackNavigation>
   )
 }

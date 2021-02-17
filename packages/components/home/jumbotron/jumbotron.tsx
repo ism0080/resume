@@ -5,8 +5,6 @@ import { Section } from '@project/components'
 import { SvgRenderer } from '@project/res'
 import { theme } from '@project/web/theme'
 
-import less from './jumbotron.less'
-
 export const Jumbotron = ({ testID, title, subtitle }: JumbotronProps) => {
   return (
     <Section testID={testID}>
