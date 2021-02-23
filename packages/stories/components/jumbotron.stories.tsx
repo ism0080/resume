@@ -1,8 +1,17 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta, Story } from '@storybook/react/types-6-0'
 
 import { Jumbotron } from '@project/components'
 
-const TESTID = 'Jumbotron'
+export default {
+  title: 'Components/Default Jumbotron',
+  component: Jumbotron
+} as Meta
 
-storiesOf('Components/Jumbotron', module).add('Standard', () => <Jumbotron testID={TESTID} title='Title' subtitle='Subtitle' />)
+const Template: Story<JumbotronProps> = (args: JumbotronProps) => <Jumbotron {...args} />
+
+export const DefaultJumbotron = Template.bind({})
+DefaultJumbotron.args = {
+  title: 'hello',
+  subtitle: 'goodbye'
+}

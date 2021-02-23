@@ -1,8 +1,17 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta, Story } from '@storybook/react/types-6-0'
 
 import { Button } from '@project/elements'
 
-const TESTID = 'button'
+export default {
+  title: 'Elements/Default Button',
+  component: Button,
+  argTypes: { onClick: { action: 'clicked' } }
+} as Meta
 
-storiesOf('Elements/Button', module).add('Standard', () => <Button testID={TESTID} title='Click ME' />)
+const Template: Story<ButtonProps> = (args: ButtonProps) => <Button {...args} />
+
+export const DefaultButton = Template.bind({})
+DefaultButton.args = {
+  title: 'Click Me'
+}

@@ -1,8 +1,17 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Meta, Story } from '@storybook/react/types-6-0'
 
 import { Loader } from '@project/elements'
 
-const TESTID = 'loader'
+export default {
+  title: 'Elements/Default Loader',
+  component: Loader,
+  argTypes: { color: { control: 'color' }, isCentered: { control: 'boolean' } }
+} as Meta
 
-storiesOf('Elements/Loader', module).add('Standard', () => <Loader testID={TESTID} color='#000' />)
+const Template: Story<LoaderProps> = (args: LoaderProps) => <Loader {...args} />
+
+export const DefaultLoader = Template.bind({})
+DefaultLoader.args = {
+  color: '#000'
+}

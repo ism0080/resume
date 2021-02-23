@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { LoaderProps } from './loader.interface'
 import less from './loader.less'
 
 /**
