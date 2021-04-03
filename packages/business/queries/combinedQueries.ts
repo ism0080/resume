@@ -7,6 +7,8 @@ export const GET_ME_LINKS = gql`
     me {
       name
       job
+      techStack
+      about
     }
     links {
       title
@@ -20,6 +22,8 @@ export const GET_ME_EXPERTISE = gql`
     me {
       name
       job
+      techStack
+      about
     }
     expertise {
       title
@@ -33,6 +37,8 @@ export const GET_ME_EXPERTISE_PROJECTS = gql`
     me {
       name
       job
+      techStack
+      about
     }
     expertise {
       title

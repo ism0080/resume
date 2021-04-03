@@ -1,10 +1,14 @@
 const expertise = [
-  { title: 'HTML5 | CSS3', content: 'LESS, CSS Modules' },
-  { title: 'JavaScript', content: 'ES6, TypeScript, React, Redux' },
-  { title: 'UI | Design', content: 'Storybook, Zeplin, Sketch, Illustrator' },
-  { title: 'Testing', content: 'Unit Testing, Jest, React Testing Library' },
-  { title: 'Version Control', content: 'Git, Github, Bitbucket, VSTS' },
-  { title: 'Project Management', content: 'Agile / Scrum, Azure DevOps' }
+  { title: 'HTML5 | CSS', content: 'LESS, CSS Modules' },
+  { title: 'Server-Side', content: 'NodeJS, C#' },
+  { title: 'JavaScript', content: 'ES6, React, TypeScript, GraphQL, Apollo, NextJS' },
+  { title: 'AWS', content: 'S3, CloudFormation, Lambda, DynamoDB, Kinesis Firehose, SQS, SNS' },
+  { title: 'C#', content: '.Net Core, API' },
+  { title: 'Other', content: 'CI/CD Pipelines, Docker' },
+  { title: 'UI | Design', content: 'Storybook, Zeplin, Sketch, Illustrator, Figma' },
+  { title: 'Testing', content: 'Jest, React Testing Library, XUnit/NUnit' },
+  { title: 'Version Control', content: 'Git, Github, Bitbucket, Azure DevOps' },
+  { title: 'Project Management', content: 'Agile / Scrum, Azure DevOps, Confluence' }
 ]
 
 const links = [
@@ -13,7 +17,15 @@ const links = [
   { title: 'Email', url: 'mailto:isaac.mackle@gmail.com' }
 ]
 
-const me = { name: 'Isaac Mackle', job: 'Software Engineer' }
+const me = {
+  name: 'Isaac Mackle',
+  job: 'Software Engineer',
+  techStack: ['React', '.Net Core', 'AWS'],
+  about:
+    "I'm always seeking new opportunities to further my knowledge and grow as a professional in my field of work. \
+     I am a friendly person who works well with others, whilst also being able to perform efficiently on my own. \
+     I have experience in multiple programming languages which allows me to quickly grasp any new programming language"
+}
 
 const projects = [
   {

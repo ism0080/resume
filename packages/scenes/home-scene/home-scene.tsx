@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { Box, Center, Flex, Stack } from '@chakra-ui/react'
+import { Box, Center, Flex, List, ListItem, Stack } from '@chakra-ui/react'
 
 import { GET_ME_EXPERTISE_PROJECTS, MeExpertiseProjectsData } from '@project/business/queries'
 import { Jumbotron, Project, Section, StackNavigation } from '@project/components'
@@ -39,8 +39,14 @@ export const HomeScene = () => {
   return (
     <StackNavigation>
       <Flex data-testid='home-scene' justify='center' direction='column' alignItems='center' w='100%'>
-        <Jumbotron testID='jumbotron' title={data.me.name} subtitle={data.me.job} />
+        <Jumbotron testID='jumbotron' title={data.me.name} subtitle={data.me.job} techStack={data.me.techStack} />
         <Section testID='section-spotlight' color='light'>
+          <Center fontSize='3xl' paddingBottom='5'>
+            About
+          </Center>
+          <Center paddingBottom='5'>
+            <Box w='1000px'>{data.me.about}</Box>
+          </Center>
           <Center fontSize='3xl' paddingBottom='5'>
             Projects
           </Center>
@@ -63,12 +69,14 @@ export const HomeScene = () => {
               align='center'
               maxW={['90%', '80%', '50%', '40%']}
             >
-              {data &&
-                data.expertise.map(({ title, content }) => (
-                  <Box paddingBottom='2' key={title}>
-                    <strong>{title}</strong> - {content}
-                  </Box>
-                ))}
+              <List>
+                {data &&
+                  data.expertise.map(({ title, content }) => (
+                    <ListItem paddingBottom='2' key={title}>
+                      <strong>{title}</strong> - {content}
+                    </ListItem>
+                  ))}
+              </List>
             </Stack>
           </Center>
         </Section>

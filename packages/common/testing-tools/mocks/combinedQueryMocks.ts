@@ -19,7 +19,9 @@ export const meExpertiseQueryMock: MockedResponse<Record<string, MeQuery | Exper
       data: {
         me: {
           name: 'Isaac Mackle',
-          job: 'Software Engineer'
+          job: 'Software Engineer',
+          techStack: ['React', '.Net Core', 'AWS'],
+          about: 'About Me'
         },
         expertise: [
           {
@@ -61,7 +63,9 @@ export const meLinksQueryMock: MockedResponse<Record<string, MeQuery | LinksQuer
       data: {
         me: {
           name: 'Isaac Mackle',
-          job: 'Software Engineer'
+          job: 'Software Engineer',
+          techStack: ['React', '.Net Core', 'AWS'],
+          about: 'About Me'
         },
         links: [
           {
@@ -91,7 +95,9 @@ export const meExpertiseProjectsQueryMock: MockedResponse<Record<string, MeQuery
       data: {
         me: {
           name: 'Isaac Mackle',
-          job: 'Software Engineer'
+          job: 'Software Engineer',
+          techStack: ['React', '.Net Core', 'AWS'],
+          about: 'About Me'
         },
         expertise: [
           {

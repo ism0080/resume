@@ -21,6 +21,8 @@ export const typeDefs = gql`
     id: ID!
     name: String!
     job: String!
+    techStack: [String]!
+    about: String!
   }
   type Project {
     testID: String!

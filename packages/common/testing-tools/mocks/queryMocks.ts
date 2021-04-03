@@ -11,7 +11,9 @@ export const meQueryMock: MockedResponse<Record<string, MeQuery>>[] = [
       data: {
         me: {
           name: 'Isaac Mackle',
-          job: 'Software Engineer'
+          job: 'Software Engineer',
+          techStack: ['React', '.Net Core', 'AWS'],
+          about: 'About Me'
         }
       }
     }

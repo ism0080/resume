@@ -5,6 +5,8 @@ export const GET_ME = gql`
     me {
       name
       job
+      techStack
+      about
     }
   }
 `
@@ -12,4 +14,6 @@ export const GET_ME = gql`
 export interface MeQuery {
   name: string
   job: string
+  techStack: string[]
+  about: string
 }
