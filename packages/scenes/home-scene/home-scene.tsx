@@ -45,7 +45,9 @@ export const HomeScene = () => {
             About
           </Center>
           <Center paddingBottom='5'>
-            <Box w='1000px'>{data.me.about}</Box>
+            <Box w='1000px' p='0 20px'>
+              {data.me.about}
+            </Box>
           </Center>
           <Center fontSize='3xl' paddingBottom='5'>
             Projects
