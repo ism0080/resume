@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import { Box, Center, Flex, List, ListItem, Stack } from '@chakra-ui/react'
 
 import { GET_ME_EXPERTISE_PROJECTS, MeExpertiseProjectsData } from '@project/business/queries'
 import { Jumbotron, Project, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
+import { GAevent, GApageView } from '@project/ga'
 import { useBreakpoints } from '@project/hooks'
 import { SvgRenderer } from '@project/res'
 import { ErrorScene } from '@project/scenes'
@@ -13,6 +14,10 @@ import { theme } from '@project/web/theme'
 export const HomeScene = () => {
   const { isMobile } = useBreakpoints()
   const { loading, error, data } = useQuery<MeExpertiseProjectsData>(GET_ME_EXPERTISE_PROJECTS)
+
+  useEffect(() => {
+    GApageView('Home')
+  })
 
   if (loading) return <Loader testID='home-loader' color='#000' isCentered />
   if (error || !data) return <ErrorScene testID='home-error' text='An Error Occurred' />
@@ -33,6 +38,7 @@ export const HomeScene = () => {
   }
 
   const resumeClickHandler = () => {
+    GAevent('View CV', 'Clicked Button')
     window.open('assets/isaac_mackle_cv_web.pdf')
   }
 

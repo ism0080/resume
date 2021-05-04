@@ -1,5 +1,6 @@
 {
   "GRAPH_URL": "http://localhost:3000/api",
   "GRAPH_AUTH": "12345",
-  "ENVIRONMENT": "DEV"
+  "ENVIRONMENT": "DEV",
+  "GA_TAG": "UA-196186333-1"
 }

@@ -1,5 +1,6 @@
 {
   "GRAPH_URL": "https://graph.isaacmackle.com/api",
   "GRAPH_AUTH": "ism0080",
-  "ENVIRONMENT": "PROD"
+  "ENVIRONMENT": "PROD",
+  "GA_TAG": "UA-196186333-1"
 }
