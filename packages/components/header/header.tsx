@@ -7,7 +7,7 @@ import less from './header.less'
 
 export const Header = ({ testID, title, subtitle }: HeaderProps) => {
   const magic = {
-    nav: 5,
+    nav: 200,
     height: 79
   }
 

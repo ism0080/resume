@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import { Box, Center, Flex, List, ListItem, Stack } from '@chakra-ui/react'
 
 import { GET_ME_EXPERTISE_PROJECTS, MeExpertiseProjectsData } from '@project/business/queries'
-import { Jumbotron, Project, Section, StackNavigation } from '@project/components'
+import { FadeInWhenVisible, Jumbotron, Project, Section, StackNavigation } from '@project/components'
 import { Button, Loader } from '@project/elements'
 import { GAevent, GApageView } from '@project/ga'
 import { useBreakpoints } from '@project/hooks'
@@ -55,38 +55,47 @@ export const HomeScene = () => {
               {data.me.about}
             </Box>
           </Center>
-          <Center fontSize='3xl' paddingBottom='5'>
-            Projects
-          </Center>
-          <Center>
-            <Stack direction={['column', 'column', 'row']} spacing='16px' justify='center' wrap='wrap' align='center' w={['90%', '100%']}>
-              {data && data.projects.map((props) => <Project key={props.testID} {...props} />)}
-            </Stack>
-          </Center>
+          <FadeInWhenVisible>
+            <Center fontSize='3xl' paddingBottom='5'>
+              Projects
+            </Center>
+            <Center>
+              <Stack direction={['column', 'column', 'row']} spacing='16px' justify='center' wrap='wrap' align='center' w={['90%', '100%']}>
+                {data &&
+                  data.projects.map((props) => (
+                    <FadeInWhenVisible key={props.testID}>
+                      <Project {...props} />
+                    </FadeInWhenVisible>
+                  ))}
+              </Stack>
+            </Center>
+          </FadeInWhenVisible>
         </Section>
         <Section testID='section-skills' color='light'>
-          <Center paddingBottom='5' fontSize='3xl'>
-            Expertise
-          </Center>
-          <Center>
-            <Stack
-              direction={['column', 'column', 'row']}
-              spacing='16px'
-              justify='space-evenly'
-              wrap='wrap'
-              align='center'
-              maxW={['90%', '80%', '50%', '40%']}
-            >
-              <List>
-                {data &&
-                  data.expertise.map(({ title, content }) => (
-                    <ListItem paddingBottom='2' key={title}>
-                      <strong>{title}</strong> - {content}
-                    </ListItem>
-                  ))}
-              </List>
-            </Stack>
-          </Center>
+          <FadeInWhenVisible>
+            <Center paddingBottom='5' fontSize='3xl'>
+              Expertise
+            </Center>
+            <Center>
+              <Stack
+                direction={['column', 'column', 'row']}
+                spacing='16px'
+                justify='space-evenly'
+                wrap='wrap'
+                align='center'
+                maxW={['90%', '80%', '50%', '40%']}
+              >
+                <List>
+                  {data &&
+                    data.expertise.map(({ title, content }) => (
+                      <ListItem paddingBottom='2' key={title}>
+                        <strong>{title}</strong> - {content}
+                      </ListItem>
+                    ))}
+                </List>
+              </Stack>
+            </Center>
+          </FadeInWhenVisible>
         </Section>
         <Section testID='section-cv' color='dark' twoColumn>
           <SvgRenderer

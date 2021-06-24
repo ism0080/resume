@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 import { useBreakpoints } from '@project/hooks'
 import { theme } from '@project/web/theme'
@@ -19,7 +20,7 @@ export const Button = ({ title, onClick }: ButtonProps) => {
   }
 
   return (
-    <button
+    <motion.button
       className={less.button}
       onClick={onClick}
       style={{
@@ -27,8 +28,10 @@ export const Button = ({ title, onClick }: ButtonProps) => {
         width: isMobile ? width.small : width.big,
         height: isMobile ? height.small : height.big
       }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
     >
       {title}
-    </button>
+    </motion.button>
   )
 }
