@@ -57,7 +57,7 @@
     "lint-staged": "^10.2.11",
     "path": "^0.12.7",
     "prettier": "1.18.2",
-    "stylelint": "^13.3.3",
+    "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
